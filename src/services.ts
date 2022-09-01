@@ -1,15 +1,15 @@
 import {
-  ServerUnaryCall,
-  sendUnaryData,
-  ServerWritableStream
+  sendUnaryData, ServerUnaryCall, ServerWritableStream
 } from '@grpc/grpc-js'
-import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
+import { Empty } from './proto/google/protobuf/Empty'
 
-import { BooksHandlers } from './proto/crawler/Books'
 import { Book } from './proto/crawler/Book'
-import { BookRequest } from './proto/crawler/BookRequest'
-import { BookStatusReply } from './proto/crawler/BookStatusReply'
 import { BookContentReply } from './proto/crawler/BookContentReply'
+import { BookRequest } from './proto/crawler/BookRequest'
+import { BooksHandlers } from './proto/crawler/Books'
+import { BookStatusReply } from './proto/crawler/BookStatusReply'
+import { CrawlerVer } from './proto/crawler/CrawlerVer'
+import { GetCrawlerVerHandlers } from './proto/crawler/GetCrawlerVer'
 
 export const BooksServer: BooksHandlers = {
   GetBook (call: ServerUnaryCall<BookRequest, Book>, callback: sendUnaryData<Book>): void {
@@ -26,5 +26,11 @@ export const BooksServer: BooksHandlers = {
 
   RequestCacheBook (call: ServerUnaryCall<Book, Empty>, callback: sendUnaryData<Empty>): void {
     // TODO: implement RequestCacheBook
+  }
+}
+
+export const CrawlerVerServer: GetCrawlerVerHandlers = {
+  GetCrawlerVer (call: ServerUnaryCall<Empty, CrawlerVer>, callback: sendUnaryData<CrawlerVer>): void {
+    // TODO: implement GetCrawlerVer
   }
 }

@@ -14,6 +14,7 @@ const proto = (loadPackageDefinition(packageDefinition) as unknown) as ProtoGrpc
 
 const server = new Server()
 server.addService(proto.crawler.Books.service, BooksServer)
+server.addService(proto.crawler.GetCrawlerVer.service, BooksServer)
 
 const port = program.getOptionValue('port') as number
 const uri = `localhost:${port}`
