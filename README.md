@@ -1,5 +1,5 @@
 # Library-Crawler
-Library-Crawler is a Node.js program aimming to provide similar api to (legado)[https://github.com/gedoor/legado].
+Library-Crawler is a Node.js program aimming to provide similar api to [legado](https://github.com/gedoor/legado).
 
 ## Build
 ```bash
