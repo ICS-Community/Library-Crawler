@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package crawler;
+
+import "google/protobuf/empty.proto";
+
+enum BookStatus {
+    UNCACHED = 0;
+    CACHED = 1;
+    UPDATING = 2;
+    UNAVAILABLE = 3;
+}
+
+message Book {
+    int32 id = 1;
+    string title = 2;
+    BookStatus status = 4;
+    string oriId = 5;
+    string oriSource = 6;
+}
+
+message BookStatusReply {
+  BookStatus status = 1;
+}
+
+message BookContentReply {
+  string content = 1;
+}
+
+message CrawlerVer {
+  int32 version = 1;
+}
+
+message BookRequest {
+  int32 id = 1;
+}
+
+service Books {
+    rpc GetBook(BookRequest) returns (Book) {};
+    rpc GetBookStatus(BookRequest) returns (BookStatusReply) {};
+    rpc RequestCacheBook(Book) returns (google.protobuf.Empty) {};
+    rpc GetBookContent(BookRequest) returns (stream BookContentReply) {};
+}
+
+service GetCrawlerVer {
+  rpc GetCrawlerVer(google.protobuf.Empty) returns (CrawlerVer) {};
+}
