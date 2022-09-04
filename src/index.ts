@@ -2,7 +2,7 @@ import { loadPackageDefinition, Server, ServerCredentials } from '@grpc/grpc-js'
 import { loadSync } from '@grpc/proto-loader'
 import { Command } from 'commander'
 import { ProtoGrpcType } from './proto/books'
-import { BooksServer } from './services'
+import { BooksServer } from './server//services'
 
 const program = new Command('ICS-Library-Crawler')
   .option('-p, --port [port]', 'port for rpc to listen', '3000')
@@ -14,6 +14,7 @@ const proto = (loadPackageDefinition(packageDefinition) as unknown) as ProtoGrpc
 
 const server = new Server()
 server.addService(proto.crawler.Books.service, BooksServer)
+server.addService(proto.crawler.GetCrawlerVer.service, BooksServer)
 
 const port = program.getOptionValue('port') as number
 const uri = `localhost:${port}`
