@@ -6,18 +6,18 @@ import { isMainThread, Worker } from 'worker_threads'
 import path from 'path'
 import fs from 'fs'
 
-import { Empty } from './proto/google/protobuf/Empty'
+import { Empty } from '../proto/google/protobuf/Empty'
 
-import { Book } from './proto/crawler/Book'
-import { BookContentReply } from './proto/crawler/BookContentReply'
-import { BooksHandlers } from './proto/crawler/Books'
-import { BookStatusReply } from './proto/crawler/BookStatusReply'
-import { CrawlerVer } from './proto/crawler/CrawlerVer'
-import { GetCrawlerVerHandlers } from './proto/crawler/GetCrawlerVer'
-import { RequestCacheBookReply } from './proto/crawler/RequestCacheBookReply'
+import { Book } from '../proto/crawler/Book'
+import { BookContentReply } from '../proto/crawler/BookContentReply'
+import { BooksHandlers } from '../proto/crawler/Books'
+import { BookStatusReply } from '../proto/crawler/BookStatusReply'
+import { CrawlerVer } from '../proto/crawler/CrawlerVer'
+import { GetCrawlerVerHandlers } from '../proto/crawler/GetCrawlerVer'
+import { RequestCacheBookReply } from '../proto/crawler/RequestCacheBookReply'
 import { getBook, hasBook } from './db'
-import { GetBookReply } from './proto/crawler/GetBookReply'
-import { BookStatus } from './proto/crawler/BookStatus'
+import { GetBookReply } from '../proto/crawler/GetBookReply'
+import { BookStatus } from '../proto/crawler/BookStatus'
 
 let worker: Worker
 let isCrawlerReady = false

@@ -1,5 +1,5 @@
-import { Book } from './proto/crawler/Book'
-import { BookStatus } from './proto/crawler/BookStatus'
+import { Book } from '../proto/crawler/Book'
+import { BookStatus } from '../proto/crawler/BookStatus'
 
 const books: Book[] = [
   { id: 1, title: 'AAA', status: BookStatus.CACHED },
