@@ -1,10 +1,10 @@
-import BaseChapter from './BaseChapter'
+import IBaseChapter from './IBaseChapter'
 
-export default interface BaseBook<T extends BaseChapter> {
+export default interface IBaseBook {
   getBookName: () => string
   getArtistName: () => string
   getBookIntro: () => string
   getUpdateTime: () => Date
-  getIndex: () => T[]
+  getIndex: () => IBaseChapter[]
   getAlbumUrl: () => string
 }

@@ -1,4 +1,4 @@
-export default interface BaseChapter {
+export default interface IBaseChapter {
   getName: () => string
   getPublishTime: () => Date
   getContent: () => string
