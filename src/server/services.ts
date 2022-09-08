@@ -100,5 +100,6 @@ export const BooksServer: BooksHandlers = {
 export const CrawlerVerServer: GetCrawlerVerHandlers = {
   GetCrawlerVer (call: ServerUnaryCall<Empty, CrawlerVer>, callback: sendUnaryData<CrawlerVer>): void {
     // TODO: implement GetCrawlerVer
+    callback(null, {})
   }
 }

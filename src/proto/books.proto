@@ -39,7 +39,7 @@ message BookContentReply {
 }
 
 message CrawlerVer {
-  int32 version = 1;
+  string version = 1;
 }
 
 

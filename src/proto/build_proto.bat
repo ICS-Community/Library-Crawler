@@ -8,6 +8,6 @@ yarn run proto-loader-gen-types ^
     --enums=String ^
     --defaults ^
     --oneofs ^
-    --outDir=$PROTO_DIR ^
+    --outDir=%PROTO_DIR% ^
     --grpcLib=@grpc/grpc-js ^
     ./src/proto/*.proto

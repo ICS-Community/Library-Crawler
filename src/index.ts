@@ -2,7 +2,7 @@ import { loadPackageDefinition, Server, ServerCredentials } from '@grpc/grpc-js'
 import { loadSync } from '@grpc/proto-loader'
 import { Command } from 'commander'
 import { ProtoGrpcType } from './proto/books'
-import { BooksServer } from './server//services'
+import { BooksServer } from './server/services'
 
 const program = new Command('ICS-Library-Crawler')
   .option('-p, --port [port]', 'port for rpc to listen', '3000')
