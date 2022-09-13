@@ -1,4 +1,4 @@
-import { isMainThread, parentPort } from 'node:worker_threads'
+import { isMainThread, parentPort } from 'worker_threads'
 import { Book } from '../proto/crawler/Book'
 import { Legado } from './legado/Legado'
 

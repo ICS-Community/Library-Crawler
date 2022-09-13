@@ -1,7 +1,7 @@
-import { sources, BaseSource } from './Source/LegadoTransferer'
+import { sources, LegadoBaseSource } from './Source/LegadoTransferer'
 
 export class Legado {
-  getSource (name: string): BaseSource | undefined {
+  getSource (name: string): LegadoBaseSource | undefined {
     sources.forEach((value) => {
       if (value.name === name) {
         return value

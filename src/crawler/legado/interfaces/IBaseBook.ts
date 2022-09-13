@@ -1,6 +1,8 @@
 import IBaseChapter from './IBaseChapter'
 
-export default interface IBaseBook {
+import { Book } from '../../../proto/crawler/Book'
+
+export default interface IBaseBook extends Book {
   getBookName: () => string | Promise<string>
   getArtistName: () => string | Promise<string>
   getBookIntro: () => string | Promise<string>

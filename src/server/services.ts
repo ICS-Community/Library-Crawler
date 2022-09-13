@@ -6,6 +6,8 @@ import { isMainThread, Worker } from 'worker_threads'
 import path from 'path'
 import fs from 'fs'
 
+import { sources } from '../crawler/legado/Source/LegadoTransferer'
+
 import { Empty } from '../proto/google/protobuf/Empty'
 
 import { Book } from '../proto/crawler/Book'
@@ -25,6 +27,21 @@ if (isMainThread) {
   worker = new Worker(path.join(__dirname, 'crawler.js'))
   worker.addListener('ready', () => {
     isCrawlerReady = true
+    const handler = async (): Promise<void> => {
+      for (const source of sources) {
+        for (const category of await source.listDiscoverCategory()) {
+          for (let i = 1; i <= 10; i++) {
+            for (const book of await source.discoverByCategory(category, i)) {
+              worker.emit('cache', book)
+            }
+          }
+        }
+      }
+    }
+
+    handler().catch((reason) => {
+      console.log(reason)
+    })
   })
   worker.addListener('exit', () => {
     isCrawlerReady = false
@@ -40,6 +57,10 @@ export const BooksServer: BooksHandlers = {
     if (book !== undefined) {
       callback(null, {
         books: [book]
+      })
+    } else {
+      callback(null, {
+        books: []
       })
     }
   },
@@ -99,7 +120,7 @@ export const BooksServer: BooksHandlers = {
 
 export const CrawlerVerServer: GetCrawlerVerHandlers = {
   GetCrawlerVer (call: ServerUnaryCall<Empty, CrawlerVer>, callback: sendUnaryData<CrawlerVer>): void {
-    // TODO: implement GetCrawlerVer
-    callback(null, {})
+    // using version from env because TypeScript restrict access to files (package.json) out of rootDir
+    callback(null, { version: process.env.npm_package_version })
   }
 }
